@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomButtom extends StatelessWidget {
-  CustomButtom({required this.name,this.onTabe});
+  CustomButtom({Key? key, required this.name,this.onTabe}) : super(key: key);
   String name;
   VoidCallback? onTabe;
   @override
@@ -19,7 +19,7 @@ class CustomButtom extends StatelessWidget {
         child: Center(
           child: Text(
             name,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           
         ),

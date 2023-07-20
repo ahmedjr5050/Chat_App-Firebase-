@@ -11,6 +11,8 @@ import '../widgets/custom_textfields.dart';
 // ignore: must_be_immutable
 class LoginPage extends StatefulWidget {
   static String id = 'LoginPage';
+
+  const LoginPage({Key? key}) : super(key: key);
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -27,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: kPrimaycolor,
+        backgroundColor: kPrimaryColor,
         body: Form(
           key: formkey,
           child: Column(
@@ -54,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
                     Custom_textformfiel(
@@ -67,12 +69,13 @@ class _LoginPageState extends State<LoginPage> {
                       height: 16,
                     ),
                     Custom_textformfiel(
+                      obsecure: true,
                       hinttext: 'Password',
                       onChanged: (data) {
                         password = data;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     CustomButtom(
@@ -84,7 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                           try {
                             await registerUser();
                             snakebarMasseage(context, 'sucess');
-                            Navigator.pushNamed(context, chatPage.id);
+                            Navigator.pushNamed(context, ChatPage.id,
+                                arguments: email);
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
                               snakebarMasseage(

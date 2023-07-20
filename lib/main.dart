@@ -6,26 +6,28 @@ import 'package:scholar_chat/Pages/register.dart';
 
 import 'firebase_options.dart';
 
-void main() async{
-    WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(HomePage());
+  runApp(const HomePage());
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  LoginPage(),
+      home: const LoginPage(),
       routes: {
-        LoginPage.id:(context) =>  LoginPage(),
-        RegisterPage.id:(context) =>  RegisterPage(),
-        chatPage.id:(context)=>chatPage(),
+        LoginPage.id: (context) => const LoginPage(),
+        RegisterPage.id: (context) => const RegisterPage(),
+        ChatPage.id: (context) => ChatPage(),
       },
-      initialRoute: chatPage.id,
+      initialRoute: LoginPage.id,
     );
   }
 }

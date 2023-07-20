@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:scholar_chat/Pages/chat_page..dart';
 import 'package:scholar_chat/constants.dart';
-
 import '../helper/snakebarMasseage.dart';
 import '../widgets/custom_buttom.dart';
 import '../widgets/custom_textfields.dart';
@@ -11,6 +10,8 @@ import '../widgets/custom_textfields.dart';
 // ignore: must_be_immutable
 class RegisterPage extends StatefulWidget {
   static String id = 'RegisterPage';
+
+  const RegisterPage({Key? key}) : super(key: key);
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
@@ -29,14 +30,14 @@ class _RegisterPageState extends State<RegisterPage> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: kPrimaycolor,
+        backgroundColor: kPrimaryColor,
         body: Form(
           key: formkey,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 75,
                 ),
                 Image.asset('assets/images/scholar.png'),
@@ -91,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             setState(() {});
                             try {
                               await registerUser();
-                              Navigator.pushNamed(context, chatPage.id);
+                              Navigator.pushNamed(context, ChatPage.id);
                               snakebarMasseage(context, 'sucess');
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'weak-password') {
